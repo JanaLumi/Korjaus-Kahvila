@@ -8,7 +8,7 @@ As a repairer, I will do my best to:
 - Welcome people kindly — not just their broken things  
 - Listen before I touch or suggest a fix  
 - Ask for consent before taking over a repair  
-- **Never take tools or items out of someone’s hands** —  
+- **Never take tools or items out of somebody’s hands** —  
   unless there is immediate danger, and even then,  
   I will speak with care  
 - Explain what I’m doing as I go, so others can learn  
