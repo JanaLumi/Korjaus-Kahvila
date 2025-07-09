@@ -66,7 +66,7 @@ All contents of this repository are shared under a **Creative Commons Attributio
 
 ---
 
-## ✨ Acknowledgements  
+## 🌟 Acknowledgements  
 
 Korjaus Kahvila draws inspiration from the international Repair Café movement, feminist hacker spaces, anarchist mutual aid kitchens, and folk craft circles everywhere. This format exists because of them.  
 
