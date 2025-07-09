@@ -11,13 +11,13 @@ This repository contains templates, resources, and guidance for hosting your own
 
 ## 🌼 A Note on Emergence  
 
-Before diving into logistics and templates, we invite you to read [`STARTING-TOGETHER.md`](./STARTING-TOGETHER.md) — a short reflection on how to begin. It’s not about branding or identity. It’s about feeling your way with your own community, using what helps and making it your own.  
+Before diving into logistics and templates, we invite you to read [`STARTING TOGETHER`](./STARTING-TOGETHER.md) — a short reflection on how to begin. It’s not about branding or identity. It’s about feeling your way with your own community, using what helps and making it your own.  
 
 ---
 
 ## 🌱 What’s in this repository?  
 
-- [`RISK_ASSESSMENT.md`](./RISK_ASSESSMENT.md): A markdown-formatted health & safety risk assessment for use in venues, grant applications, or volunteer training. Fork it. Adapt it. Keep people safe.  
+- [`RISK ASSESSMENT`](./docs/Risk-Assessment-en.md): A markdown-formatted health & safety risk assessment for use in venues, grant applications, or volunteer training. Fork it. Adapt it. Keep people safe.  
 - `POSTER_TEMPLATE/`: (coming soon) Visual resources for sharing key safety messages, etiquette, and volunteer guidance in a friendly, non-hierarchical way.  
 - `CHECKLIST.md`: (coming soon) A lightweight planning and setup checklist for first-time organisers.  
 - `VALUES.md`: (optional) A declaration of the cultural and political values underpinning this format (e.g. repair as resistance, accessibility, care, anti-waste, decolonialism).  
