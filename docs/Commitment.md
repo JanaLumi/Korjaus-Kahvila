@@ -1,4 +1,4 @@
-# 🛠 Repairer Commitments Poster (Draft)
+# 🛠 Repairer Commitments Poster
 
 A guide for repairers who help others fix things.  
 This isn’t a contract. It’s a shared understanding.  
