@@ -3,7 +3,7 @@ A repair café - a place to get together and fix things
 
 A community repair café model for resistance to waste culture, skill erosion, and capitalist disposability.  
 
-**Korjaus Kahvila** (Finnish for "Repair Café") is a mutual aid gathering where volunteers and community members meet to repair broken items, share skills, and slow down together. It’s part workshop, part gathering, part protest.  
+**Korjaus Kahvila** (Suomi for "Repair Café") is a mutual aid gathering where volunteers and community members meet to repair broken items, share skills, and slow down together. It’s part workshop, part gathering, part protest.  
 
 This repository contains templates, resources, and guidance for hosting your own Korjaus Kahvila — and for adapting it to your local context.  
 
