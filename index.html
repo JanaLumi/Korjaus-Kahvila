@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korjaus Kahvila — Repair Café Tampere</title>
+    <meta name="description" content="Yhteisötapahtuma, ei korjauspalvelu. Yhdessä löydämme ratkaisut. Do It Together.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;600&family=Playpen+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <style>
+        /* ===== TOKENS ===== */
+        :root {
+            --yellow: #fde892;
+            --coral: #ff8861;
+            --black: #000000;
+            --white: #ffffff;
+            --font-display: 'Lobster', cursive;
+            --font-body: 'Poppins', sans-serif;
+            --font-note: 'Playpen Sans', cursive;
+        }
+
+        /* ===== RESET ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ===== BASE ===== */
+        body {
+            background-color: var(--yellow);
+            color: var(--black);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            padding: 0 1.25rem 4rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: var(--coral);
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            text-align: center;
+            padding: 2.5rem 0 1.25rem;
+        }
+
+        .site-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.2rem, 14vw, 5.5rem);
+            color: var(--coral);
+            -webkit-text-stroke: 2px var(--black);
+            line-height: 1.05;
+        }
+
+        .site-subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+            color: var(--black);
+            margin-top: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        .dit-tagline {
+            font-family: var(--font-note);
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+            font-weight: 700;
+            margin-top: 0.85rem;
+        }
+
+        .dit-tagline em {
+            color: var(--coral);
+            font-style: normal;
+        }
+
+        /* ===== DIVIDER ===== */
+        hr {
+            border: none;
+            border-top: 2px solid var(--black);
+            margin: 1.75rem 0;
+        }
+
+        /* ===== TTS BUTTON ===== */
+        .tts-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: 2px solid var(--black);
+            border-radius: 2rem;
+            padding: 0.45rem 1.1rem;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+
+        .tts-btn:hover,
+        .tts-btn.speaking {
+            background: var(--coral);
+            color: var(--white);
+            border-color: var(--coral);
+        }
+
+        .tts-btn svg {
+            width: 1rem;
+            height: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== TABS ===== */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.88rem;
+            background: none;
+            border: 2px solid var(--black);
+            border-radius: 2rem;
+            padding: 0.4rem 1.1rem;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--coral);
+            color: var(--white);
+            border-color: var(--coral);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* ===== UPCOMING EVENTS ===== */
+        .upcoming-list {
+            list-style: none;
+        }
+
+        .event-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-card.next {
+            border-color: var(--coral);
+            border-width: 3px;
+        }
+
+        .next-badge {
+            font-family: var(--font-note);
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: var(--coral);
+            color: var(--white);
+            border-radius: 1rem;
+            padding: 0.15rem 0.65rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .event-date {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 5vw, 1.7rem);
+            color: var(--coral);
+            -webkit-text-stroke: 1px var(--black);
+            line-height: 1.2;
+        }
+
+        .event-time {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 0.1rem;
+        }
+
+        .event-location {
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .event-address {
+            font-size: 0.85rem;
+            color: #444;
+        }
+
+        .event-theme {
+            font-family: var(--font-note);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--coral);
+            margin-top: 0.5rem;
+        }
+
+        .event-desc {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .empty-state {
+            font-family: var(--font-note);
+            font-size: 0.95rem;
+            color: #555;
+            padding: 1.5rem 0;
+        }
+
+        /* ===== LOG / PAST ===== */
+        .past-list {
+            list-style: none;
+        }
+
+        .past-card {
+            border-top: 2px solid var(--black);
+            padding: 1rem 0;
+        }
+
+        .past-date {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--coral);
+        }
+
+        .past-notes {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-section {
+            margin-top: 0.5rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 6vw, 2rem);
+            color: var(--coral);
+            -webkit-text-stroke: 1px var(--black);
+            margin-bottom: 0.75rem;
+        }
+
+        .about-section p {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .callout {
+            font-family: var(--font-note);
+            font-size: 0.92rem;
+            font-weight: 700;
+            border-left: 4px solid var(--coral);
+            padding-left: 0.85rem;
+            margin: 1rem 0 1.25rem;
+            line-height: 1.55;
+        }
+
+        /* ===== HOW TO PARTICIPATE ===== */
+        .participate-list {
+            list-style: none;
+            margin: 0.75rem 0;
+        }
+
+        .participate-list li {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 0.65rem;
+            font-size: 0.95rem;
+        }
+
+        .participate-list .icon {
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        /* ===== FIND US ===== */
+        .find-us {
+            margin-top: 0.5rem;
+        }
+
+        .find-us p {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            font-family: var(--font-note);
+            font-size: 0.78rem;
+            text-align: center;
+            margin-top: 3rem;
+            color: #555;
+        }
+
+        .site-footer a {
+            color: inherit;
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--coral);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <h1 class="site-title">Korjaus<br>Kahvila</h1>
+        <p class="site-subtitle">Repair Café · Tampere</p>
+        <p class="dit-tagline">Ei DIY — vaan <em>DIT</em>. Do It Together.</p>
+    </header>
+
+    <hr>
+
+    <!-- TTS -->
+    <button class="tts-btn" id="ttsBtn" aria-label="Kuuntele tulevat päivämäärät">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <span id="ttsBtnLabel">Kuuntele tulevat päivämäärät</span>
+    </button>
+
+    <!-- TABS -->
+    <nav class="tabs" role="tablist" aria-label="Tapahtumat">
+        <button class="tab-btn active" role="tab" aria-selected="true"
+                aria-controls="tab-upcoming" data-tab="upcoming">Tulossa</button>
+        <button class="tab-btn" role="tab" aria-selected="false"
+                aria-controls="tab-log" data-tab="log">Tapahtumat</button>
+    </nav>
+
+    <!-- UPCOMING -->
+    <section class="tab-panel active" id="tab-upcoming" role="tabpanel">
+        <ul class="upcoming-list" id="upcomingList">
+            <li class="empty-state">Ladataan...</li>
+        </ul>
+    </section>
+
+    <!-- LOG -->
+    <section class="tab-panel" id="tab-log" role="tabpanel">
+        <ul class="past-list" id="pastList">
+            <li class="empty-state">
+                Lokikirja täyttyy tapahtumien myötä.<br>
+                <em>The log fills as we gather.</em>
+            </li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <!-- ABOUT -->
+    <section class="about-section">
+        <h2 class="section-heading">Mikä tämä on?</h2>
+        <p>Korjaus Kahvila on kuukausittainen yhteisötapahtuma Tampereella. Tuomme rikkinäiset tavarat yhteen — ja yritämme korjata ne yhdessä.</p>
+        <div class="callout">Tämä on yhteisötapahtuma, ei korjauspalvelu. Jokainen osallistuu kykyjensä mukaan. Yhdessä löydämme ratkaisut.</div>
+        <p>Et tarvitse korjaustaitoja tullaksesi. Et tarvitse uusia välineitä. Tuo se, mikä on rikki — ja katsotaan yhdessä mitä tehdään.</p>
+
+        <h2 class="section-heading" style="margin-top: 1.5rem;">Osallistuminen</h2>
+        <ul class="participate-list">
+            <li><span class="icon">💔</span><span>Tuo mukanasi korjattavat rikkinäiset tavarat</span></li>
+            <li><span class="icon">🔧</span><span>Tuo omat työkalusi, jos sinulla on sellaisia</span></li>
+            <li><span class="icon">☕</span><span>Tarjoamme teetä, kahvia ja mehua — ota oma muki mukaan!</span></li>
+            <li><span class="icon">🆓</span><span>Vapaa pääsy</span></li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <!-- FIND US -->
+    <section class="find-us">
+        <h2 class="section-heading">Missä?</h2>
+        <p><strong>Kumppanuustalo Artteli</strong></p>
+        <p>Mustanlahdenkatu 22, Tampere</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://maps.google.com/?q=Mustanlahdenkatu+22,+Tampere"
+               target="_blank" rel="noopener" style="font-weight: 600;">
+                Avaa kartalla →
+            </a>
+        </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>Korjaus Kahvila · Tampere ·
+            <a href="https://tinyurl.com/KorjausKahvila">tinyurl.com/KorjausKahvila</a>
+        </p>
+    </footer>
+
+
+    <script>
+        // ==========================================================
+        // CSV LOADING
+        // events.csv lives next to index.html.
+        // Edit that file to add, update, or close events.
+        // Columns: date, time, location, address, city, status,
+        //          theme, description, log_file
+        // status: "upcoming" or "past"
+        // ==========================================================
+
+        Papa.parse('events.csv', {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const upcoming = results.data
+                    .filter(e => e.status === 'upcoming' && new Date(e.date) >= today)
+                    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                const past = results.data
+                    .filter(e => e.status === 'past' || new Date(e.date) < today)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                renderUpcoming(upcoming);
+                renderPast(past);
+            },
+            error: function() {
+                document.getElementById('upcomingList').innerHTML =
+                    '<li class="empty-state">Tapahtumia ei voitu ladata.</li>';
+            }
+        });
+
+        function renderUpcoming(events) {
+            const list = document.getElementById('upcomingList');
+            if (events.length === 0) {
+                list.innerHTML = '<li class="empty-state">Seuraava päivämäärä ilmoitetaan pian.</li>';
+                return;
+            }
+            list.innerHTML = events.map((e, i) => {
+                const dateStr = new Date(e.date).toLocaleDateString('fi-FI', {
+                    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+                });
+                const isNext = i === 0;
+                const badge = isNext ? '<span class="next-badge">Seuraava</span><br>' : '';
+                const theme = e.theme ? `<p class="event-theme">✦ ${e.theme}</p>` : '';
+                const desc  = e.description ? `<p class="event-desc">${e.description}</p>` : '';
+
+                return `<li>
+                    <div class="event-card${isNext ? ' next' : ''}">
+                        ${badge}
+                        <p class="event-date">${dateStr}</p>
+                        <p class="event-time">${e.time}</p>
+                        <p class="event-location">${e.location}</p>
+                        <p class="event-address">${e.address}</p>
+                        ${theme}${desc}
+                    </div>
+                </li>`;
+            }).join('');
+        }
+
+        function renderPast(events) {
+            if (events.length === 0) return; // keep default empty message
+            const list = document.getElementById('pastList');
+            list.innerHTML = events.map(e => {
+                const dateStr = new Date(e.date).toLocaleDateString('fi-FI', {
+                    day: 'numeric', month: 'long', year: 'numeric'
+                });
+                const theme = e.theme ? ` · ${e.theme}` : '';
+                const desc  = e.description ? `<p class="past-notes">${e.description}</p>` : '';
+                return `<li class="past-card">
+                    <p class="past-date">${dateStr}${theme}</p>
+                    ${desc}
+                </li>`;
+            }).join('');
+        }
+
+
+        // ==========================================================
+        // TABS
+        // ==========================================================
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                document.querySelectorAll('.tab-panel').forEach(p => {
+                    p.classList.remove('active');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+
+
+        // ==========================================================
+        // TEXT TO SPEECH
+        // Reads upcoming dates aloud in Finnish.
+        // Click again to stop.
+        // ==========================================================
+
+        const ttsBtn   = document.getElementById('ttsBtn');
+        const ttsLabel = document.getElementById('ttsBtnLabel');
+        let speaking   = false;
+
+        ttsBtn.addEventListener('click', () => {
+            if (speaking) {
+                window.speechSynthesis.cancel();
+                return; // onend handler resets state
+            }
+
+            const dateEls = document.querySelectorAll('#tab-upcoming .event-date');
+            const timeEls = document.querySelectorAll('#tab-upcoming .event-time');
+            if (dateEls.length === 0) return;
+
+            let text = 'Tulevat Korjaus Kahvila -tapahtumat. ';
+            dateEls.forEach((el, i) => {
+                text += el.textContent + ', kello ' + (timeEls[i]?.textContent || '') + '. ';
+            });
+            text += 'Kumppanuustalo Artteli, Mustanlahdenkatu 22, Tampere. Vapaa pääsy.';
+
+            const utt  = new SpeechSynthesisUtterance(text);
+            utt.lang   = 'fi-FI';
+            utt.rate   = 0.93;
+
+            utt.onstart = () => {
+                speaking = true;
+                ttsBtn.classList.add('speaking');
+                ttsLabel.textContent = 'Lopeta';
+            };
+            utt.onend = utt.onerror = () => {
+                speaking = false;
+                ttsBtn.classList.remove('speaking');
+                ttsLabel.textContent = 'Kuuntele tulevat päivämäärät';
+            };
+
+            window.speechSynthesis.speak(utt);
+        });
+    </script>
+
+</body>
+</html>
