@@ -29,7 +29,74 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    <link rel="stylesheet" href="style.css" />    
+    <link rel="stylesheet" href="style.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.korjauskahvila.fi/#organization",
+          "name": "Korjaus Kahvila Tampere",
+          "alternateName": "Repair Café Tampere",
+          "url": "https://www.korjauskahvila.fi/",
+          "logo": "https://www.korjauskahvila.fi/assets/images/logo.png", 
+          "description": "Yhteisöllinen ja vapaamuotoinen tapaaminen, jossa korjaamme rikkinäisiä tavaroita yhdessä. Toimimme verkostona eri puolilla kaupunkia.",
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Tampere"
+          }
+        },
+        {
+          "@type": "EventSeries",
+          "@id": "https://www.korjauskahvila.fi/#eventseries",
+          "name": "Korjaus Kahvila Tampere",
+          "description": "Vapaamuotoinen ja yhteisöllinen get-together Tampereella. Ota mukaan omat rikkinäiset tavarasi ja katsotaan yhdessä, miten ne saadaan kuntoon kahvin ja teen äärellä.",
+          "startDate": "2026-01-01",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Kumppanuustalo Artteli",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Mustanlahdenkatu 22",
+                "addressLocality": "Tampere",
+                "postalCode": "33210",
+                "addressCountry": "FI"
+              }
+            }
+            /* 
+            You can easily add more locations to this list in the future by copying 
+            the block above and separating them with a comma, like this:
+            ,
+            {
+              "@type": "Place",
+              "name": "Another Community Space",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Streetname 12",
+                "addressLocality": "Tampere",
+                "postalCode": "33XXX",
+                "addressCountry": "FI"
+              }
+            }
+            */
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          },
+          "organizer": {
+            "@id": "https://www.korjauskahvila.fi/#organization"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- HI! Welcome to Korjaus Kahvila, the first repair café in Tampere, Suomi. Here we repair things together. You can bring broken things to repair, but don't expect a free service. The idea is to figure out things together. So, come along, bring your tools and enthusiasm and let's repair our broken things, together! -->
