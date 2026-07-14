@@ -5,7 +5,7 @@ Sometimes, vintage sewing machines demand a bit of real mechanical detective wor
 ### 1. Singer "Panoramic 9440"
 [website]()
 * **The Machine:** The **Panoramic 9440** is a vintage mechanical free-arm sewing machine produced by **Singer** (often dating to the late 1970s or 1980s).
-* **About the Parts:** Because it belongs to Singer's "9400" family, it utilizes Singer’s "old model high" presser feet and standard horizontal rotary hook components.
+* **About the Parts:** Because it belongs to Singer's "9400" family, it utilises Singer’s "old model high" presser feet and standard horizontal rotary hook components.
 
 [How to use video]()
 
