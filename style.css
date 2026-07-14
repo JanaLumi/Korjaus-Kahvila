@@ -83,6 +83,11 @@
             pointer-events: none;
             white-space: nowrap;
         }
+
+        .sticky-title img {
+                padding-top: 5px;
+        }
+
         .sticky-title.visible { opacity: 1; }
 
         /* ===== SHARED BUTTON STYLES ===== */
