@@ -380,9 +380,10 @@
     <div class="voice-overlay" id="voiceOverlay" role="dialog" aria-modal="true" aria-labelledby="overlayHeading">
         <div class="voice-overlay-inner">
             <button class="overlay-close" id="overlayClose" aria-label="Sulje">✕</button>
-            <p id="overlayHeading"><strong>Suomenkielistä puhetta ei löydy tältä laitteelta.</strong></p>
-            <p>Ääneen lukeminen ei onnistu, koska laitteeltasi puuttuu suomenkielinen puheääni.</p>
-            <p>Voit käyttää selaimen kääntäjää tai kopioida tekstin valitsemaasi käännöspalveluun. Tämä ikkuna pysyy auki, kunnes suljet sen.</p>
+            <p id="overlayHeading"><strong>Suomenkielistä puheääntä ei löytynyt.</strong></p>
+            <p>Jos sinulla on se asennettuna, paina <em>Yritä uudelleen</em> — äänien latautuminen voi kestää hetken.</p>
+            <p>Jos ääntä ei ole, etsi laitteesi asetuksista: <strong>Finnish voice</strong> tai <strong>Suomi puheääni</strong>.</p>
+            <button class="btn-pill" id="overlayRetry" style="margin-top:0.75rem;">Yritä uudelleen</button>
         </div>
     </div>
 
@@ -501,6 +502,9 @@
 
 
     <script>
+    // Load voices eagerly so they're ready before the first button press
+    window.speechSynthesis.getVoices();
+    let pendingTTS = null; // stores whichever TTS was attempted when overlay showed
     // =================================================================
     // GLOBAL STATE
     // upcomingEvents is filled after CSV loads.
@@ -640,16 +644,18 @@
     // =================================================================
     function checkFinnishVoice() {
         return new Promise(resolve => {
-            const test = () => resolve(
-                window.speechSynthesis.getVoices().some(v => v.lang.startsWith('fi'))
-            );
-            if (window.speechSynthesis.getVoices().length > 0) {
-                test();
-            } else {
-                // Voices load asynchronously in some browsers
-                window.speechSynthesis.addEventListener('voiceschanged', test, { once: true });
-                setTimeout(() => resolve(false), 1500); // fallback timeout
+            const voices = window.speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                resolve(voices.some(v => v.lang.startsWith('fi')));
+                return;
             }
+            // Still loading — wait for event or fall back after 3 seconds
+            window.speechSynthesis.addEventListener('voiceschanged', () => {
+                resolve(window.speechSynthesis.getVoices().some(v => v.lang.startsWith('fi')));
+            }, { once: true });
+            setTimeout(() => {
+                resolve(window.speechSynthesis.getVoices().some(v => v.lang.startsWith('fi')));
+            }, 3000);
         });
     }
 
@@ -668,6 +674,11 @@
     // Tap outside the inner box to close
     voiceOverlay.addEventListener('click', e => {
         if (e.target === voiceOverlay) voiceOverlay.classList.remove('visible');
+    });
+
+    document.getElementById('overlayRetry').addEventListener('click', () => {
+        voiceOverlay.classList.remove('visible');
+        if (pendingTTS) pendingTTS();
     });
 
 
@@ -731,6 +742,8 @@
             if (e.theme) text += e.theme + '. ';
         });
         text += 'Paikka: Kumppanuustalo Artteli, Mustanlahdenkatu 22, Tampere. Vapaa pääsy.';
+
+        pendingTTS = () => ttsPageBtn.click(); // (or ttsEventsBtn.click() for the other one)
 
         speakText(text, ttsEventsBtn,
             () => { ttsEventsSpeaking = true;  },
