@@ -1,6 +1,12 @@
-Sometimes, vintage sewing machines demand a bit of real mechanical detective work. Looking closely at those specific model numbers and markings reveals how they fit together:
+Current sewing machine:
 
----
+### Husqvarna 230 Electronic 
+Location: Artteli
+Videos: [How to use](https://www.youtube.com/playlist?list=PLkCmFOVCGJuIEPZRSAt5y2JSO17kWV91P) | [Basic Maintenance](https://www.youtube.com/watch?v=sek0-DziI-0)
+
+- - - - -
+
+## Machines to be repaired
 
 ### 1. Singer "Panoramic 9440"
 [website]()
