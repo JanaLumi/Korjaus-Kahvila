@@ -2,7 +2,6 @@ Current sewing machine:
 
 ### Husqvarna 230 Electronic
 Location: Artteli
-
 Videos: [How to use](https://www.youtube.com/playlist?list=PLkCmFOVCGJuIEPZRSAt5y2JSO17kWV91P) | [Basic Maintenance](https://www.youtube.com/watch?v=sek0-DziI-0)
 
 - - - - -
