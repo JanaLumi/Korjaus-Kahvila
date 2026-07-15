@@ -210,7 +210,7 @@
         <hr>
 
         <!-- FIND US -->
-        <section class="find-us" id="section-location">
+   <!--     <section class="find-us" id="section-location">
             <h2 class="section-heading">Missä?</h2>
             <p><strong>Kumppanuustalo Artteli</strong></p>
             <p>Mustanlahdenkatu 22, Tampere</p>
@@ -220,7 +220,7 @@
                     Avaa kartalla →
                 </a>
             </p>
-        </section>
+        </section> -->
 
         <footer class="site-footer">
             <p>Korjaus Kahvila · Tampere ·
@@ -471,9 +471,8 @@
             text += dateStr + ', kello ' + e.time + '. ';
             if (e.theme) text += e.theme + '. ';
         });
-        text += 'Paikka: Kumppanuustalo Artteli, Mustanlahdenkatu 22, Tampere. Vapaa pääsy.';
 
-        pendingTTS = () => ttsPageBtn.click(); // (or ttsEventsBtn.click() for the other one)
+        pendingTTS = () => ttsEventsBtn.click(); // (or ttsEventsBtn.click() for the other one)
 
         speakText(text, ttsEventsBtn,
             () => { ttsEventsSpeaking = true;  },
