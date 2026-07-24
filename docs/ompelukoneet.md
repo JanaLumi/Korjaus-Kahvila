@@ -31,7 +31,7 @@ Videos: [How to use](https://www.youtube.com/playlist?list=PLkCmFOVCGJuIEPZRSAt5
 
 ## Machines to be repaired
 
-### 1. Singer "Panoramic 9440"
+### 1. Singer Panoramic 9440
 [website]()
 
 Videos: [How to use](https://www.youtube.com/watch?v=0mo3i2IwIvE)
@@ -92,7 +92,7 @@ Videos: [How to use](https://www.youtube.com/watch?v=bwMmUhC9rMk) | [Manual](htt
 * **Frozen Selector Dials:** Dried original factory grease locks the pattern shafts over time. Apply localized low heat (using a hair dryer) to melt old resin before flushing with solvent and applying synthetic lubricant.
 * **Rear Cam Stack:** Check the rear nylon cam drive gear for hairline cracks, which can cause rhythmic clunking or erratic pattern feed.
 
-### 5. Lewenstein "5168"
+### 5. Lewenstein 5168
 [website](https://lewenstein.eu/)
 
 [How to use video]()
