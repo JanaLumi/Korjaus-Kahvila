@@ -56,7 +56,7 @@ Videos: [How to use](https://www.youtube.com/watch?v=bwMmUhC9rMk) | [Manual](htt
 * **For Repairers:**
 > **Crucial Inspection Point:** The Lydia 3 family is notorious for a cracked internal thermoplastic pattern cam stack. When this gear splits, zig-zag and decorative stitches will fail completely, though it may still sew a straight stitch. Inspect this stack before attempting motor or tension repairs.
 
-### Bernina Klasse 700 (JMG 60 Motor Spec)
+### 3. Bernina Klasse 700 (JMG 60 Motor Spec)
 [website]()
 
 [How to use video]()
@@ -68,7 +68,7 @@ Videos: [How to use](https://www.youtube.com/watch?v=bwMmUhC9rMk) | [Manual](htt
 * **For New Users:** A premium Swiss machine offering exceptional needle control and piercing power.
 * **For Repairers:** Built to incredibly tight tolerances with high-grade metal gearing. Requires regular oiling with fine sewing machine lubricant on all metal friction points. Verify that the motor suppresses radio interference via the internal capacitor block; failed capacitors can blow fuses or cause motor runaway.
 
-### Husqvarna Viking 2000 (Model 6450)
+### 4. Husqvarna Viking 2000 (Model 6450)
 [website]()
 
 [How to use video]()
@@ -91,7 +91,6 @@ Videos: [How to use](https://www.youtube.com/watch?v=bwMmUhC9rMk) | [Manual](htt
 * **Sintered Bronze Bearings:** Do not oil the main shaft bronze bushings; they are self-lubricating when dry.
 * **Frozen Selector Dials:** Dried original factory grease locks the pattern shafts over time. Apply localized low heat (using a hair dryer) to melt old resin before flushing with solvent and applying synthetic lubricant.
 * **Rear Cam Stack:** Check the rear nylon cam drive gear for hairline cracks, which can cause rhythmic clunking or erratic pattern feed.
-
 
 ### 5. Lewenstein "5168"
 [website](https://lewenstein.eu/)
