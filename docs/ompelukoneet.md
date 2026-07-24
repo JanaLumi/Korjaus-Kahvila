@@ -13,7 +13,7 @@ This document serves as a field guide for new users, volunteers, and technicians
 | **Lewenstein 5168** | ~7.0 kg | Yes | Vertical Oscillating / Front-Loading | ~68–73 dB | 38 × 16 × 28 cm | Standard universal parts; easy to service. |
 | **Husqvarna Viking 6450** | ~11.5 kg | Yes | Jam-Proof Rotary Hook | ~65–70 dB *(higher in low gear)* | 41 × 19 × 30 cm | Reduction gearbox; self-lubricating bronze bearings. |
 
-**Current sewing machine:**
+## Current sewing machines available to use:
 
 ### Husqvarna Viking 230 Electronic
 Location: Artteli
