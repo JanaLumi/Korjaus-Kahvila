@@ -2,7 +2,7 @@
 
 This document serves as a field guide for new users, volunteers, and technicians in community repair hubs or home workshops. It covers key mechanical insights, common maintenance traps, and technical specifications for five prominent vintage and utility machines.
 
-## 2. Technical Specifications & Comparison
+## Technical Specifications & Comparison
 
 | Model | Weight | Free Arm? | Hook / Bobbin System | Noise Level (dB) | Dimensions (approx.) | Technical Notes |
 | --- | --- | --- | --- | --- | --- | --- |
