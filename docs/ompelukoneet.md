@@ -103,14 +103,9 @@ Videos: [How to use](https://www.youtube.com/watch?v=bwMmUhC9rMk) | [Manual](htt
 * **For New Users:** Features an intuitive front-loading vertical bobbin system and clear stitch selection dials, ideal for beginners or quick mend jobs.
 * **For Repairers:** Uses standard System 130/705 H needles and universal snap-on presser feet. The drive belt tension should be checked periodically, as age can cause slack that reduces needle penetration force.
 
-
-
-
-
-
 ---
 
-## 3. General Servicing Best Practices
+## General Servicing Best Practices
 
 1. **Needle Standardisation:** All five machines utilize standard **System 130/705 H** flat-shank domestic needles. Always install a fresh needle before diagnosing stitch issues.
 2. **De-gumming Old Grease:** Never force stiff dials or handwheels on vintage stock. Mild heat treatment and isopropyl alcohol flushes prevent snapping brittle linkage arms.
