@@ -45,6 +45,10 @@
 
         a { color: var(--coral); }
 
+        #mainTitle {
+            width: 400px;
+        }
+
         /* Screen-reader-only utility */
         .sr-only {
             position: absolute; width: 1px; height: 1px;
@@ -384,6 +388,13 @@
             color: #555;
         }
         .site-footer a { color: inherit; }
+
+        /* Mobile Portrait: always 1 column */
+        @media (max-width: 768px) and (orientation: portrait) {
+            #mainTitle {
+                width: 350px;
+            }
+        }
 
         /* ===== ACCESSIBILITY ===== */
         @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
