@@ -86,10 +86,11 @@
             transition: opacity 0.2s ease;
             pointer-events: none;
             white-space: nowrap;
+            width: 300px;
         }
 
         .sticky-title img {
-                padding-top: 5px;
+            padding-top: 5px;
         }
 
         .sticky-title.visible { opacity: 1; }
@@ -393,6 +394,9 @@
         @media (max-width: 768px) and (orientation: portrait) {
             #mainTitle {
                 width: 350px;
+            }
+            .sticky-title {
+                width: 160px;
             }
         }
 
