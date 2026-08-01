@@ -393,7 +393,7 @@
         /* Mobile Portrait: always 1 column */
         @media (max-width: 768px) and (orientation: portrait) {
             #mainTitle {
-                width: 350px;
+                width: 330px;
             }
             .sticky-title {
                 width: 170px;
